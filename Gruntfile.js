@@ -31,31 +31,22 @@ module.exports = function(grunt) {
             }
         },
         watch: {
+			options: {
+				livereload: true
+			},
             css: {
                 files: ['src/sass/**/*.scss'],
                 tasks: 'sass',
-                options: {
-                    livereload: true
-                }
             },
             html: {
                 files: ['*.html'],
-                options: {
-                    livereload: true
-                }
             },
             bake: {
                 files: ['src/html/pages/src/**', 'src/html/includes/**'],
                 tasks: 'bake', 
-                options: {
-                    livereload: true
-                }        
             },
             js: {
                 files: ['src/js/*.js'],
-                options: {
-                    livereload: true
-                }        
             }
         }
     });
