@@ -4,7 +4,7 @@ module.exports = function(grunt) {
         connect: {
             server: {
                 options: {
-                    hostname: 'localhost',
+					hostname: 'localhost',
 					port: 8080,
                     livereload: true,
                     open: true
@@ -57,14 +57,12 @@ module.exports = function(grunt) {
                 tasks: 'sass',
             },
             html: {
-                files: ['*.html'],
-            },
-            bake: {
-                files: ['src/html/pages/src/**', 'src/html/includes/**'],
+                files: ['src/html/**/*.html'],
                 tasks: 'bake', 
             },
             js: {
                 files: ['src/js/*.js'],
+				tasks: 'copy:js'
             }
         }
     });
