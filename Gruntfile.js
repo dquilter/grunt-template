@@ -4,7 +4,8 @@ module.exports = function(grunt) {
         connect: {
             server: {
                 options: {
-                    port: 8080,
+                    hostname: 'localhost',
+					port: 8080,
                     livereload: true,
                     open: true
                 }
@@ -18,7 +19,24 @@ module.exports = function(grunt) {
                 }
             }
         },
-
+		copy: {
+			css: {
+				files: [{
+					expand: true,
+					flatten: true,
+					src: ['src/sass/vendor/*'],
+					dest: 'dist/css/vendor/'
+				}]
+			},
+			js: {
+				files: [{
+					expand: true,
+					flatten: true,
+					src: ['src/js/**/*'],
+					dest: 'dist/js/'
+				}]
+			}
+		},
         sass: {
             dist: {
                 options: {
@@ -52,10 +70,11 @@ module.exports = function(grunt) {
     });
     
     grunt.loadNpmTasks('grunt-bake');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
     
-    grunt.registerTask('default', ['bake', 'sass', 'connect', 'watch']);
+    grunt.registerTask('default', ['bake', 'sass', 'copy', 'connect', 'watch']);
     
 };
