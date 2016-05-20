@@ -1,24 +1,24 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-    grunt.initConfig({
-        connect: {
-            server: {
-                options: {
+	grunt.initConfig({
+		connect: {
+			server: {
+				options: {
 					hostname: 'localhost',
 					port: 8080,
-                    livereload: true,
-                    open: true
-                }
-            }
-        },
-        bake: {
-            dohtml: {
-                options: {},
-                files: {
-                    'dist/index.html': 'src/html/pages/index.html'
-                }
-            }
-        },
+					livereload: true,
+					open: true
+				}
+			}
+		},
+		bake: {
+			dohtml: {
+				options: {},
+				files: {
+					'dist/index.html': 'src/html/pages/index.html'
+				}
+			}
+		},
 		copy: {
 			css: {
 				files: [{
@@ -37,42 +37,42 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-        sass: {
-            dist: {
-                options: {
-                    style: 'expanded',
-                    sourcemap: 'none'
-                },
-                files: {
-                    'dist/css/styles.css': 'src/sass/styles.scss',
-                }
-            }
-        },
-        watch: {
+		sass: {
+			dist: {
+				options: {
+					style: 'expanded',
+					sourcemap: 'none'
+				},
+				files: {
+					'dist/css/styles.css': 'src/sass/styles.scss',
+				}
+			}
+		},
+		watch: {
 			options: {
 				livereload: true
 			},
-            css: {
-                files: ['src/sass/**/*.scss'],
-                tasks: 'sass',
-            },
-            html: {
-                files: ['src/html/**/*.html'],
-                tasks: 'bake', 
-            },
-            js: {
-                files: ['src/js/*.js'],
+			css: {
+				files: ['src/sass/**/*.scss'],
+				tasks: 'sass',
+			},
+			html: {
+				files: ['src/html/**/*.html'],
+				tasks: 'bake',
+			},
+			js: {
+				files: ['src/js/*.js'],
 				tasks: 'copy:js'
-            }
-        }
-    });
-    
-    grunt.loadNpmTasks('grunt-bake');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    
-    grunt.registerTask('default', ['bake', 'sass', 'copy', 'connect', 'watch']);
-    
+			}
+		}
+	});
+
+	grunt.loadNpmTasks('grunt-bake');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-connect');
+
+	grunt.registerTask('default', ['bake', 'sass', 'copy', 'connect', 'watch']);
+
 };
